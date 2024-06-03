@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const fruits = ['apple', 'apple', 'kiwi', 'banana', 'kiwi', 'apple'];
+        const fruitCount = fruits.reduce((acc, fruit) => {
+            acc[fruit] = (acc[fruit] || 0) + 1;
+            return acc;
+        }, {});
+        document.write(JSON.stringify(fruitCount) + "<br>");
+    </script>
+
+    <script>
+        const fruitsArr = ['apple', 'apple', 'kiwi', 'banana', 'kiwi', 'apple'];
+        const uniqueFruitsArray = [...new Set(fruitsArr)];
+        document.write(JSON.stringify(uniqueFruitsArray) + "<br>");
+    </script>
+
+    <script>
+        const students = [
+            { name: 'alex', age: 25 },
+            { name: 'mike', age: 24 },
+            { name: 'masha', age: 29 },
+            { name: 'will', age: 11 },
+        ];
+
+        const groupStudentsByAge = (students) => students.reduce((acc, student) => {
+            acc[student.age] = acc[student.age] || [];
+            acc[student.age].push(student);
+            return acc;
+        }, {});
+
+        const groupedByAge = groupStudentsByAge(students);
+        document.write(JSON.stringify(groupedByAge) + "<br>");
+    </script>
+
+    <script>
+        function findPairWithSum(array, targetSum) {
+            const seen = new Set();
+            for (const num of array) {
+                const complement = targetSum - num;
+                if (seen.has(complement)) {
+                    return [[complement, num]];
+                }
+                seen.add(num);
+            }
+            return [];
+        }
+        const numbers = [2, 7, 11, 15];
+        const sumToFind = 9;
+
+        const resultPair = findPairWithSum(numbers, sumToFind);
+        document.write(JSON.stringify(resultPair) + "<br>");
+    </script>
+</body>
+
+</html>
